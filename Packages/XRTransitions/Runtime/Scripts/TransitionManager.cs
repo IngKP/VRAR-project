@@ -76,13 +76,15 @@ public class TransitionManager : MonoBehaviour
         bool keyboardTriggered = false;
 
         // Check New Input System
-        if (Keyboard.current != null && (Keyboard.current.spaceKey.wasPressedThisFrame || Keyboard.current.digit1Key.wasPressedThisFrame))
+        // if (Keyboard.current != null && (Keyboard.current.spaceKey.wasPressedThisFrame || Keyboard.current.digit1Key.wasPressedThisFrame))
+        if (Keyboard.current != null && (Keyboard.current.digit1Key.wasPressedThisFrame))
         {
             keyboardTriggered = true;
         }
         
         // Check Legacy Input (Backup)
-        if (UnityEngine.Input.GetKeyDown(KeyCode.Space) || UnityEngine.Input.GetKeyDown(KeyCode.Alpha1))
+        // if (UnityEngine.Input.GetKeyDown(KeyCode.Space) || UnityEngine.Input.GetKeyDown(KeyCode.Alpha1))
+        if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha1))
         {
             keyboardTriggered = true;
         }
