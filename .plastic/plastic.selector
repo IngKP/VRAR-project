@@ -1,0 +1,4 @@
+repository "My project 2025-11-13_20-09-00/VRAR-project@18968328362922@cloud"
+  path "/"
+    br "/main"
+    co "/main"
