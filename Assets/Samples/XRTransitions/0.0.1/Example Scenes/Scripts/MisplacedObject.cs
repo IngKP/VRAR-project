@@ -1,3 +1,4 @@
+using System; // Required for Action
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -6,6 +7,9 @@ public class MisplacedObject : MonoBehaviour
     [Tooltip("The particle effect to play when found.")]
     public GameObject successEffect;
     
+    // Event to notify the manager that THIS specific object was found
+    public static event Action<MisplacedObject> OnObjectFound;
+
     private UnityEngine.XR.Interaction.Toolkit.XRSimpleInteractable interactable;
 
     private void Awake()
@@ -17,28 +21,32 @@ public class MisplacedObject : MonoBehaviour
 
     private void OnEnable()
     {
-        interactable.selectEntered.AddListener(OnFound);
+        if (interactable != null)
+            interactable.selectEntered.AddListener(OnFound);
     }
 
     private void OnDisable()
     {
-        interactable.selectEntered.RemoveListener(OnFound);
+        if (interactable != null)
+            interactable.selectEntered.RemoveListener(OnFound);
     }
 
     private void OnFound(SelectEnterEventArgs args)
     {
         Debug.Log($"Found misplaced object: {gameObject.name}!");
 
-        // 1. Visual Feedback (Optional)
+        // 1. Notify the Manager (BEFORE destroying)
+        OnObjectFound?.Invoke(this);
+
+        // 2. Visual Feedback
         if (successEffect != null)
         {
             Instantiate(successEffect, transform.position, Quaternion.identity);
         }
 
-        // 2. Game Logic (Add to score, etc.)
-        // GameManager.Instance.AddScore(1); // (If you implement a score manager)
-
         // 3. Remove object
-        Destroy(gameObject);
+        // We delay destruction slightly or just disable to ensure the event processes safely
+        gameObject.SetActive(false); 
+        Destroy(gameObject, 0.1f);
     }
 }
