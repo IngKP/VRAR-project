@@ -677,7 +677,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 279775480}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af6bf904e410ee8479f9093d8830d1f8, type: 3}
   m_Name: 
@@ -841,7 +841,7 @@ MonoBehaviour:
     - rid: 7781798257754374144
       type: {class: FadeTransition, ns: Scripts.Transitions.Fade, asm: XRTransitions.Runtime}
       data:
-        <Destination>k__BackingField: {fileID: 2014458275}
+        <Destination>k__BackingField: {fileID: 1669257469}
         <IsInitialized>k__BackingField: 0
         _startContext: {fileID: 163817055}
         _fadePrefab: {fileID: 953789875192660796, guid: 03ba40afde511a94dba6f9da4c9d07b0, type: 3}
@@ -3696,7 +3696,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1669257468}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.27, y: 0, z: 0}
+  m_LocalPosition: {x: -2.8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
